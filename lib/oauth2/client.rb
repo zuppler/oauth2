@@ -148,6 +148,8 @@ module OAuth2
       puts "OAUTH - REQUEST URL: #{token_url.inspect}";
       response = request(options[:token_method], token_url, opts)
       puts "OAUTH - RESPONSE: #{response.inspect}";
+      puts "OAUTH - RESPONSE Parsed: #{response.parsed.inspect}";
+      puts "OAUTH - RESPONSE Hash: #{response.parsed.is_a?(Hash)}";
       if options[:raise_errors] && !(response.parsed.is_a?(Hash) && response.parsed['access_token'])
         error = Error.new(response)
         raise(error)
