@@ -154,7 +154,8 @@ module OAuth2
         error = Error.new(response)
         raise(error)
       end
-      access_token_class.from_hash(self, response.parsed.merge(access_token_opts))
+      result = access_token_class.from_hash(self, response.parsed.merge(access_token_opts))
+      puts "OAUTH - Access token class: #{result.inspect}";
     end
 
     # The Authorization Code strategy
